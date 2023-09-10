@@ -1,11 +1,23 @@
 plugins {
-    id 'java-library'
+    id 'application' 
 }
 
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(17)
-    }
+repositories {
+    mavenCentral() 
 }
 
-version = '1.0.0'
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.3' 
+
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+    implementation 'com.google.guava:guava:32.1.1-jre' 
+}
+
+application {
+    mainClass = 'demo.App' 
+}
+
+tasks.named('test') {
+    useJUnitPlatform() 
+}
